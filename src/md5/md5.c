@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:47:05 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/24 21:24:07 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/24 21:27:33 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ char		*md5_string(char *string)
 	md5_init(&md_ctx);
 	md5_update(&md_ctx, (unsigned char*)string, len);
 	md5_final(&md_ctx);
-	return (NULL);
+	return ("Hello rowls");
 }

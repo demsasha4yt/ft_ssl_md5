@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:24:41 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/24 21:26:43 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/24 21:32:15 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static const t_tc g_tcs[] = {
 		.name = "MD5",
 		.string = "Hello",
 		.func = &md5_string,
-		.valid = "Hello",
+		.valid = "5d41402abc4b2a76b9719d911017c592",
 	},
 	{
 		.name = "STOP",

@@ -34,7 +34,7 @@ fclean: clean
 	@/bin/rm -f ${NAME}
 	@/bin/rm -Rf ${NAME}.dSYM
 
-test:
-	@${CC} -g ${INCLUDES} -I. -o ${NAME} $(addprefix src/, ${SRC})
+test: all
+	@./ft_ssl
 
 re: fclean all

@@ -1,12 +1,12 @@
 NAME = ft_ssl
 
-SRC = main.c
+SRC = main.c md5/md5.c
 
 CC = gcc
 
 SRCDIR = src
 
-OBJDIR = obj
+OBJDIR = src
 
 OBJ = $(addprefix ${OBJDIR}/, $(SRC:.c=.o))
 
@@ -28,7 +28,7 @@ ${OBJDIR}/%.o: ${SRCDIR}/%.c
 	${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 clean:
-	@/bin/rm -Rf ${OBJDIR}
+	@/bin/rm -Rf ${OBJS}
 
 fclean: clean
 	@/bin/rm -f ${NAME}

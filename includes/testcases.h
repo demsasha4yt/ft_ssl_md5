@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   testcases.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 16:25:34 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/24 21:12:32 by bharrold         ###   ########.fr       */
+/*   Created: 2020/08/24 21:02:21 by bharrold          #+#    #+#             */
+/*   Updated: 2020/08/24 21:24:19 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#ifndef TESTCASES_H
+# define TESTCASES_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
+# define TEST 1
 
-# define MD5 0
-# define SHA256 2
-# define SHA512 4
+# ifdef TEST
+#  include <assert.h>
 
-typedef struct	s_ssl
+typedef char* (testfunc)(char *);
+
+typedef struct	s_tc
 {
-	int			argc;
-	char		**argv;
-	int			func;
-}				t_ssl;
+	char		*name;
+	char		*string;
+	char		*valid;
+	testfunc	*func;
+}				t_tc;
 
+# endif
 #endif

@@ -1,0 +1,7 @@
+.*.o
+ft_ssl
+.vscode
+*.dSYM
+Contents
+*.a
+obj

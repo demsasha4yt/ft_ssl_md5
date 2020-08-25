@@ -1,6 +1,6 @@
 NAME = ft_ssl
 
-SRC = main.c md5/md5.c
+SRC = main.c md5/md5.c md5/md5_private.c md5/md5_private_utils.c
 
 CC = gcc
 
@@ -12,7 +12,7 @@ OBJ = $(addprefix ${OBJDIR}/, $(SRC:.c=.o))
 
 DEP = $(addprefix ${OBJDIR}/, $(SRC:.c=.d))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LDFLAGS = -lm
 

@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 21:02:21 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/24 21:29:45 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:38:02 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # ifdef TEST
 #  include <assert.h>
+#  include <stdlib.h>
+#  include <string.h>
 
 typedef char* (testfunc)(char *);
 

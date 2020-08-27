@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   sha2.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 16:25:34 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 16:13:53 by bharrold         ###   ########.fr       */
+/*   Created: 2020/08/27 18:40:36 by bharrold          #+#    #+#             */
+/*   Updated: 2020/08/27 18:42:08 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#ifndef SHA2_H
+# define SHA2_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-
-# define MD5 0
-# define SHA256 2
-# define SHA512 4
-
-typedef struct	s_ssl
-{
-	int			argc;
-	char		**argv;
-	int			func;
-}				t_ssl;
-
-void				uint32_to_bytes(uint32_t val, uint8_t *bytes);
-uint32_t			bytes_to_uint32(const uint8_t *bytes);
+char			*sha256_string(char *string);
 
 #endif

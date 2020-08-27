@@ -6,10 +6,11 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:14:52 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/25 19:03:45 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/27 16:53:28 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ssl_utils.h"
 #include "md5.h"
 #include "md5_private.h"
 #include <stdio.h>
@@ -43,7 +44,7 @@ static void		md5_step_end(t_md5_ctx *ctx, int i)
 	ctx->t[3] = ctx->t[2];
 	ctx->t[2] = ctx->t[1];
 	ctx->t[1] = ctx->t[1]
-			+ LEFTROTATE(ctx->t[0] + ctx->t[5] + g_k[i] + ctx->w[ctx->t[6]],
+			+ ROTLEFT(ctx->t[0] + ctx->t[5] + g_k[i] + ctx->w[ctx->t[6]],
 						g_r[i]);
 	ctx->t[0] = ctx->t[7];
 }
@@ -82,7 +83,7 @@ static void		md5_loop(t_md5_ctx *ctx)
 	{
 		i = -1;
 		while (++i < 16)
-			ctx->w[i] = md5_to_int32(ctx->msg + ctx->offset + i * 4);
+			ctx->w[i] = bytes_to_uint32(ctx->msg + ctx->offset + i * 4);
 		ctx->t[0] = ctx->hash[0];
 		ctx->t[1] = ctx->hash[1];
 		ctx->t[2] = ctx->hash[2];
@@ -109,7 +110,7 @@ void			md5_update(t_md5_ctx *ctx, unsigned char *inbuf, uint32_t len)
 	ctx->offset = len;
 	while (++ctx->offset < ctx->new_len)
 		ctx->msg[ctx->offset] = 0;
-	md5_to_bytes(len * 8, ctx->msg + ctx->new_len);
-	md5_to_bytes(len >> 29, ctx->msg + ctx->new_len + 4);
+	uint32_to_bytes(len * 8, ctx->msg + ctx->new_len);
+	uint32_to_bytes(len >> 29, ctx->msg + ctx->new_len + 4);
 	md5_loop(ctx);
 }

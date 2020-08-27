@@ -1,6 +1,9 @@
 NAME = ft_ssl
 
-SRC = main.c md5/md5.c md5/md5_private.c md5/md5_private_utils.c
+SRC =	main.c \
+		utils/uints.c utils/bswaps.c \
+		md5/md5.c md5/md5_private.c \
+		sha2/sha256.c sha2/sha256_private.c
 
 CC = gcc
 
@@ -28,7 +31,7 @@ ${OBJDIR}/%.o: ${SRCDIR}/%.c
 	${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 clean:
-	@/bin/rm -Rf ${OBJS}
+	@/bin/rm -Rf ${OBJ}
 
 fclean: clean
 	@/bin/rm -f ${NAME}

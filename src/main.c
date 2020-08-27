@@ -6,12 +6,13 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:24:41 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/25 19:11:51 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/27 18:58:26 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 #include "md5.h"
+#include "sha2.h"
 #include "testcases.h"
 
 static const char	*g_print_usage = \
@@ -114,6 +115,12 @@ static const t_tc g_tcs[] = {
 		.string = "c4ca4238a0b923820dcc509a6f75849b",
 		.func = &md5_string,
 		.valid = "28c8edde3d61a0411511d3b1866f0636",
+	},
+	{
+		.name = "SHA256",
+		.string = "abc",
+		.func = &sha256_string,
+		.valid = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
 	},
 	{
 		.name = "STOP",

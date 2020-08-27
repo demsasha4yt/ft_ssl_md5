@@ -6,11 +6,12 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:47:05 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/25 19:02:51 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/08/27 16:41:18 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
+#include "ft_ssl_utils.h"
 #include "md5_private.h"
 #include "md5.h"
 
@@ -25,10 +26,10 @@ void			md5_init(t_md5_ctx *ctx)
 void			md5_final(t_md5_ctx *ctx)
 {
 	free(ctx->msg);
-	md5_to_bytes(ctx->hash[0], ctx->digest);
-	md5_to_bytes(ctx->hash[1], ctx->digest + 4);
-	md5_to_bytes(ctx->hash[2], ctx->digest + 8);
-	md5_to_bytes(ctx->hash[3], ctx->digest + 12);
+	uint32_to_bytes(ctx->hash[0], ctx->digest);
+	uint32_to_bytes(ctx->hash[1], ctx->digest + 4);
+	uint32_to_bytes(ctx->hash[2], ctx->digest + 8);
+	uint32_to_bytes(ctx->hash[3], ctx->digest + 12);
 }
 
 char			*md5_string(char *string)

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   uints.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 16:25:34 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 16:13:53 by bharrold         ###   ########.fr       */
+/*   Created: 2020/08/27 16:12:33 by bharrold          #+#    #+#             */
+/*   Updated: 2020/08/27 18:38:07 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_ssl_utils.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-
-# define MD5 0
-# define SHA256 2
-# define SHA512 4
-
-typedef struct	s_ssl
+void		uint32_to_bytes(uint32_t val, uint8_t *bytes)
 {
-	int			argc;
-	char		**argv;
-	int			func;
-}				t_ssl;
+	bytes[0] = (uint8_t)val;
+	bytes[1] = (uint8_t)(val >> 8);
+	bytes[2] = (uint8_t)(val >> 16);
+	bytes[3] = (uint8_t)(val >> 24);
+}
 
-void				uint32_to_bytes(uint32_t val, uint8_t *bytes);
-uint32_t			bytes_to_uint32(const uint8_t *bytes);
-
-#endif
+uint32_t	bytes_to_uint32(const uint8_t *bytes)
+{
+	return ((uint32_t)bytes[0] | ((uint32_t)bytes[1] << 8)
+	| ((uint32_t)bytes[2] << 16) | ((uint32_t)bytes[3] << 24));
+}

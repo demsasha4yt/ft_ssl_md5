@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ssl.h                                           :+:      :+:    :+:   */
+/*   bswaps.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 16:25:34 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 16:13:53 by bharrold         ###   ########.fr       */
+/*   Created: 2020/08/27 17:17:28 by bharrold          #+#    #+#             */
+/*   Updated: 2020/08/27 17:18:06 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_ssl_utils.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-
-# define MD5 0
-# define SHA256 2
-# define SHA512 4
-
-typedef struct	s_ssl
+uint32_t	bswap_uint32(uint32_t x)
 {
-	int			argc;
-	char		**argv;
-	int			func;
-}				t_ssl;
+	x = ((x << 8) & 0xFF00FF00) | ((x >> 8) & 0xFF00FF);
+	return (x << 16) | (x >> 16);
+}
 
-void				uint32_to_bytes(uint32_t val, uint8_t *bytes);
-uint32_t			bytes_to_uint32(const uint8_t *bytes);
-
-#endif
+uint64_t	bswap_uint64(uint64_t x)
+{
+	x = ((x << 8) & 0xFF00FF00FF00FF00ULL ) | ((x >> 8) & 0x00FF00FF00FF00FFULL );
+	x = ((x << 16) & 0xFFFF0000FFFF0000ULL ) | ((x >> 16) & 0x0000FFFF0000FFFFULL );
+	return (x << 32) | (x >> 32);
+}

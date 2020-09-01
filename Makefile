@@ -1,6 +1,6 @@
 NAME = ft_ssl
 
-SRC =	main.c \
+SRC =	main.c testing_main.c\
 		utils/uints.c utils/bswaps.c \
 		md5/md5.c md5/md5_private.c \
 		sha2/sha256.c sha2/sha256_private.c

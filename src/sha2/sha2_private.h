@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 15:40:48 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 19:05:02 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:47:37 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,28 @@
 # define SIG0(x) (ROTRIGHT(x,7) ^ ROTRIGHT(x,18) ^ ((x) >> 3))
 # define SIG1(x) (ROTRIGHT(x,17) ^ ROTRIGHT(x,19) ^ ((x) >> 10))
 
-
-// 0  1  2  3  4  5  6  7  8  9  10  11  12
 typedef struct			s_sha256_ctx
 {
-	uint8_t				data[64];
-	uint32_t			datalen;
-	unsigned long long	bitlen;
-	uint32_t			state[8];
-	uint32_t			t[16];
-	uint32_t			m[64];
+	uint64_t			len;
+	uint64_t			bitlen;
+	size_t				k;
+	size_t				msg_size;
+	unsigned char		*msg;
+	uint32_t			v[8];
+	uint32_t			h[8];
+	size_t				n;
+	uint32_t			w[64];
+	uint32_t			*m;
+	uint32_t			t1;
+	uint32_t			t2;
 }						t_sha256_ctx;
 
-
 void					sha256_init(t_sha256_ctx *ctx);
-void					sha256_update(t_sha256_ctx *ctx, const uint8_t *data,
-										size_t len);
+void					sha256_update(t_sha256_ctx *ctx,
+						unsigned char *data, size_t len);
 void					sha256_final(t_sha256_ctx *ctx);
 
-# endif
+#endif
 
 /*
 ** SHA2_PRIVATE_H

@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 19:15:00 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 19:03:13 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:45:49 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,24 @@
 char	*sha256_string(char *string)
 {
 	t_sha256_ctx	ctx;
+	char			prebuf[32];
 	char			*buf;
+	int				i;
 
-	buf = malloc(SHA256_BLOCK_SIZE + 1);
-	buf[SHA256_BLOCK_SIZE] = 0;;
-	printf("sha256\n");
+	buf = malloc(64 + 1);
+	memset(buf, 0, 64);
 	sha256_init(&ctx);
-	printf("sha256\n");
 	sha256_update(&ctx, (uint8_t*)string, strlen(string));
-	printf("sha258\n");
 	sha256_final(&ctx);
-	ctx.t[10] = -1;
-	while (++ctx.t[10] < 4)
+	i = -1;
+	while (++i < 8)
 	{
-		buf[ctx.t[10]] = (ctx.state[0] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 4] = (ctx.state[1] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 8] = (ctx.state[2] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 12] = (ctx.state[3] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 16] = (ctx.state[4] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 20] = (ctx.state[5] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 24] = (ctx.state[6] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
-		buf[ctx.t[10] + 28] = (ctx.state[7] >> (24 - ctx.t[10] * 8)) & 0x000000ff;
+		uint32_to_bchar(ctx.h[i], (prebuf + 4 * i));
+		snprintf(buf, 65, "%s%2.2x%2.2x%2.2x%2.2x", buf,
+		prebuf[i * 4 + 0] & 0xff,
+		prebuf[i * 4 + 1] & 0xff,
+		prebuf[i * 4 + 2] & 0xff,
+		prebuf[i * 4 + 3] & 0xff);
 	}
-	printf("\n");
 	return (buf);
 }

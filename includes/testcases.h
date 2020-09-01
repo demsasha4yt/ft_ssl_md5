@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 21:02:21 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/25 17:38:02 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:47:54 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 #  include <stdlib.h>
 #  include <string.h>
 
-typedef char* (testfunc)(char *);
+typedef char* (t_testfunc)(char *);
 
 typedef struct	s_tc
 {
 	char		*name;
 	char		*string;
 	char		*valid;
-	testfunc	*func;
+	t_testfunc	*func;
 }				t_tc;
 
 # endif

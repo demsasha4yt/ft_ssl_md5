@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:25:34 by bharrold          #+#    #+#             */
-/*   Updated: 2020/08/27 16:13:53 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/09/01 19:48:36 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # define SHA256 2
 # define SHA512 4
 
-typedef struct	s_ssl
+typedef struct		s_ssl
 {
-	int			argc;
-	char		**argv;
-	int			func;
-}				t_ssl;
+	int				argc;
+	char			**argv;
+	int				func;
+}					t_ssl;
 
 void				uint32_to_bytes(uint32_t val, uint8_t *bytes);
 uint32_t			bytes_to_uint32(const uint8_t *bytes);

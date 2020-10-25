@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testcases.h                                        :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 21:02:21 by bharrold          #+#    #+#             */
-/*   Updated: 2020/10/25 19:11:29 by bharrold         ###   ########.fr       */
+/*   Created: 2020/10/25 19:41:00 by bharrold          #+#    #+#             */
+/*   Updated: 2020/10/25 19:56:18 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTCASES_H
-# define TESTCASES_H
+#include "ft_ssl.h"
 
-# define TEST_ 2
-
-# ifdef TEST
-#  include <assert.h>
-#  include <stdlib.h>
-#  include <string.h>
-
-typedef char* (t_testfunc)(char *);
-
-typedef struct	s_tc
-{
-	char		*name;
-	char		*string;
-	char		*valid;
-	t_testfunc	*func;
-}				t_tc;
-
-# endif
-#endif
+void destroy(t_ssl *ssl) {
+	ssl->funcs_cnt = 0;
+	free(ssl->funcs);
+	free(ssl->srcstr);
+	free(ssl->func);
+	free(ssl->resulthash);
+}

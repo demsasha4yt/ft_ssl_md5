@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 16:24:41 by bharrold          #+#    #+#             */
-/*   Updated: 2020/09/01 19:42:17 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/10/25 20:15:58 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,20 @@ Cipher commands:\n";
 
 int			select_mode(t_ssl *ssl)
 {
-	(void)ssl;
-	md5_string("Hello world");
+	t_hfunc		*hfunc;
+
+	init(ssl);
+	if (parse_args(ssl))
+		return (EXIT_FAILURE);
+	hfunc = find_hfunc(ssl);
+	if (hfunc == NULL)
+		return (EXIT_FAILURE);
+	if (fetch_data(ssl)) {
+		return (EXIT_FAILURE);
+	}
+	ssl->resulthash = hfunc->func(ssl->srcstr);
+	write_result(ssl);
+	destroy(ssl);
 	return (EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bharrold <bharrold@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 19:41:20 by bharrold          #+#    #+#             */
-/*   Updated: 2020/09/02 16:50:51 by bharrold         ###   ########.fr       */
+/*   Updated: 2020/10/25 19:10:50 by bharrold         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,6 @@ static const t_tc g_tcs[] = {
 		.string = "asdfdsfasdfasdfasdfasdfasdfasdfMy super dog",
 		.func = &sha256_string,
 		.valid = "236953951ff59353008abd58c575af3b145e4b13032b6eb050239cd202589d3a",
-	},
-	{
-		.name = "SHA512",
-		.string = "",
-		.func = &sha512_string,
-		.valid = "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e",
 	},
 	{
 		.name = "STOP",
